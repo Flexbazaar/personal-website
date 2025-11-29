@@ -1,0 +1,331 @@
+/* About page: profile box with image left, text right */
+.about-box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #edeaea;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+}
+.about-profile-pic {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid #d1d1d1;
+    background: #fff;
+    flex-shrink: 0;
+}
+.about-box-text {
+    flex: 1 1 0;
+}
+@media (max-width: 600px) {
+    .about-box {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    .about-profile-pic {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+    .about-box-text {
+        word-break: break-word;
+    }
+}
+@media (max-width: 400px) {
+    .about-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .about-profile-pic {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Image hover/zoom utility: lifts and slightly scales images on hover/focus */
+.img-hover-zoom {
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease;
+    transform-origin: center;
+    will-change: transform;
+    display: inline-block;
+}
+.img-hover-zoom:hover,
+.img-hover-zoom:focus {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+/* Make sure keyboard users can see the effect */
+.img-hover-zoom:focus {
+    outline: 3px solid rgba(21,156,228,0.18);
+    outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .img-hover-zoom {
+        transition: none;
+    }
+}
+header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: #ab3939;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;        
+    top: 0;                  
+    left: 0;                 
+    width: 100%;             
+    z-index: 1000;           
+}
+
+header h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #008cff;
+}
+
+footer {
+  width: 100%;
+  background-color: #201b1b;
+  color: #890f0f;
+  text-align: center;
+  padding: 10px 0;
+    clear: both;
+    position: relative;
+}
+footer a {
+    color: #008cff;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #00bfff;
+}
+#main-image {
+    width: 100%;
+    max-width: 520px; /* limit visual width of the map image */
+    height: auto;
+    display: block;
+    margin: 0 0 0.5rem 0;
+}
+
+/* row that holds the map and the software engineer photo side-by-side */
+.map-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space between map and photo */
+}
+
+/* make the map and software photo share the same displayed width */
+.map-row > img {
+    flex: 1 1 0;
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%; /* allow both images to always be equal width */
+    min-width: 0;
+}
+
+.software-photo {
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 780px) {
+    .map-row { flex-direction: column; gap: 0.5rem; }
+    .map-row > img { width: 100%; max-width: 100%; }
+}
+
+.floating-paragraph {
+    position: static;
+    margin: 0.25rem 0 0 0;
+}
+
+.text-content {
+  color: #222;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.0;
+}
+.info-box {
+    background-color: #922e2e;
+    color: #222;
+    padding: 0.6rem;
+    max-width: 360px;    /* control max width on large screens */
+    width: 320px;        /* fixed-ish width so box sits to the right */
+    border-radius: 8px;
+    box-sizing: border-box
+}
+
+/* layout inside info box: text left, profile image right */
+.info-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between; /* ensure image stays to the right */
+}
+.main-content {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1rem; /* spacing inside page area */
+}
+
+.left-column {
+    flex: 1 1 60%;
+    min-width: 220px;
+}
+
+.info-box {
+    background-color: #922e2e;
+    color: #222;
+    padding: 0.6rem;
+    width: 320px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 0; /* flush with layout; main-content controls spacing */
+    position: relative; /* allow absolutely positioned children */
+    padding-right: calc(64px + 1rem); /* leave room for top-right profile photo */
+}
+.skills-list li {
+    margin: 0.15rem 0;
+}
+
+/* remove default bullets for skills list inside info box */
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.35rem 0 0.5rem 0;
+}
+.profile-right {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* profile row: small photo with text beside it */
+.profile-row {
+    display: flex;
+    flex-direction: row-reverse; /* keep photo on the right */
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.profile-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    position: absolute; /* pin to top-right of info box */
+    top: 0.6rem;
+    right: 0.6rem;
+}
+.profile-text { flex: 1 1 auto; min-width: 0; }
+.profile-text h3 { margin: 0 0 0.1rem 0; font-size: 1rem; }
+.profile-sub { margin: 0; font-size: 0.9rem; color: rgba(0,0,0,0.75); }
+
+@media (max-width: 540px) {
+    /* On small screens, let the photo flow inline (not absolute) */
+    .profile-photo { width: 56px; height: 56px; position: static; margin-left: 0; }
+    .info-box { padding-right: 0.6rem; }
+}
+
+/* stack image under text on very small screens */
+@media (max-width: 420px) {
+    .info-inner {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .profile-right {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* Responsive breakpoint: on narrow screens center the info box and allow it to grow vertically */
+@media (max-width: 540px) {
+    .main-content { flex-direction: column; padding: 0.5rem; }
+    .info-box {
+        width: 100%;
+        max-width: none;
+        margin: 0.75rem 0 0 0;
+    }
+    .info-inner { flex-direction: row; }
+    .profile-right { width: 56px; height: 56px; margin-left: 0.5rem; }
+}
+
+/* space content below fixed header */
+body { padding-top: 64px; }
+
+/* Floating WhatsApp button */
+.whatsapp-float {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(37,211,102,0.22);
+    z-index: 3000;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.whatsapp-float:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(37,211,102,0.28); }
+.whatsapp-float:focus { outline: 3px solid rgba(0,0,0,0.08); }
+.whatsapp-float svg { width: 58%; height: 58%; fill: #fff; }
+
+/* hide on tiny screens if you prefer */
+@media (max-width: 340px) { .whatsapp-float { display: none; } }
+
+/* accessibility helper for screen-reader-only text */
+.sr-only {
+    position: absolute!important;
+    width: 1px!important;
+    height: 1px!important;
+    padding: 0!important;
+    margin: -1px!important;
+    overflow: hidden!important;
+    clip: rect(0, 0, 0, 0)!important;
+    white-space: nowrap!important;
+    border: 0!important;
+}
+
+/* Footer icon sizing and color */
+footer a svg { width: 20px; height: 20px; vertical-align: middle; fill: currentColor; }
+footer a { margin: 0 8px; }
